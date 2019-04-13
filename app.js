@@ -1,3 +1,4 @@
+const api = require('./routes/api');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const entries = require('./routes/entries');
@@ -35,6 +36,8 @@ app.use(session({
 app.use(messages);
 //app.use(myFilter); //if enabled app goes in "screen loop"!
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', api.auth);
 app.use(user);
 
 
